@@ -1,0 +1,90 @@
+$def with (callback_params, session, token_response, json_response)
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>3-Legged OAuth2 Test Callback</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1>3-Legged OAuth2 Test Callback</h1>
+
+$if 'messages' in json_response and json_response['messages'] is not None:
+    <h2>Error</h2>
+    <p>$json_response['messages']</p>
+
+$if session is not None:
+    <h2>Session parameters</h2>
+    <table>
+        <tbody>
+        <tr>
+            <td>oauth2_server</td>
+            <td>$session['oauth2_server']</td>
+        </tr>
+        <tr>
+            <td>api_server</td>
+            <td>$session['api_server']</td>
+        </tr>
+        <tr>
+            <td>api_key</td>
+            <td>$session['api_key']</td>
+        </tr>
+        </tbody>
+    </table>
+
+<h2>Callback parameters</h2>
+<table>
+    <tbody>
+    <tr>
+        <td>code parameter</td>
+        <td>$callback_params['code']</td>
+    </tr>
+    <tr>
+        <td>state parameter</td>
+        <td>$callback_params['state']</td>
+    </tr>
+    </tbody>
+</table>
+
+$if 'messages' not in json_response:
+    <h2>Token response</h2>
+    <table>
+        <tbody>
+        <tr>
+            <td>access_token</td>
+            <td>$token_response['access_token']</td>
+        </tr>
+        <tr>
+            <td>token_type</td>
+            <td>$token_response['token_type']</td>
+        </tr>
+        <tr>
+            <td>refresh_token</td>
+            <td>$token_response['refresh_token']</td>
+        </tr>
+        <tr>
+            <td>expires_in</td>
+            <td>$token_response['expires_in']</td>
+        </tr>
+        <tr>
+            <td>scope</td>
+            <td>$token_response['scope']</td>
+        </tr>
+        </tbody>
+    </table>
+    <h2>User Identity API Call Response</h2>
+    <table>
+        <tbody>
+        <tr>
+            <td>Username</td>
+            <td>$json_response['username']</td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>$json_response['name']['firstName']  $json_response['name']['lastName']</td>
+        </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
+

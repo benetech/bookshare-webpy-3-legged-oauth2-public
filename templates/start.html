@@ -1,0 +1,22 @@
+$def with (callback_url)
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>3-Legged Auth Test</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1>3-Legged Auth Test</h1>
+<p>This requires that you already have an API key and callback URL defined in Bookshare environment.</p>
+<p>To test a callback page in this app, add $callback_url to your accepted Redirect URI list for your API key.</p>
+<form action="#" method="post" id="visibleForm" name="visibleForm">
+    <p><label>OAuth2 Server (no trailing slash): <input type="text" name="oauth2Server" id="oauth2Server" value="https://auth.bookshare.org"/></label></p>
+    <p><label>API Server (no trailing slash): <input type="text" name="apiServer" id="apiServer" value="https://api.bookshare.org/v2"/></label></p>
+    <p><label>API Key: <input type="text" name="apiKey" id="apiKey"/></label></p>
+    <p><label>Callback URL: <input type="text" name="redirectUri" id="redirectUri" value="$callback_url"/></label></p>
+    <p><label>State (optional): <input type="text" name="state" id="state" value="myState"/></label></p>
+    <p><label>Scope (optional): <input type="text" name="scope" id="scope" value="basic"/></label></p>
+    <p><input type="submit" value="Submit"/></p>
+</form>
+</body>
+</html>
